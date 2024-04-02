@@ -22,7 +22,7 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
                 </ul>
             </header>
             <main className={'container m-auto px-2'}>
-                <div className={'flex justify-center mt-8'}>
+                <div className={'flex justify-center items-center my-8'}>
                     <Link to={'/'}
                           className={clsx('mx-2 p-6 text-2xl font-medium text-white rounded-[50px] cursor-pointer', {
                               'bg-emerald-600': url === '/',
