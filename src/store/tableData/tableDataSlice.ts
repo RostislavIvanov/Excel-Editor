@@ -1,14 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type InitialStateType = Record<string, string | number | Date>[]
+type InitialStateType = {
+    data: Record<string, any>[];
+    chosenCol: string;
+}
 
-const initialState: InitialStateType = [];
+const initialState: InitialStateType = {
+    data: [],
+    chosenCol: '',
+};
+
 export const tableDataSlice = createSlice({
     name: 'tableData',
     initialState,
     reducers: {
-        initData: (_state, action: PayloadAction<InitialStateType>) => {
-            return action.payload;
+        initData: (state, action: PayloadAction<Record<string, any>[]>) => {
+            state.data = action.payload;
         },
     },
 });
