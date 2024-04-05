@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TableDataType } from '~/types/tableTypes.ts';
 
 type InitialStateType = {
-    data: Record<string, any>[];
+    data: TableDataType;
     chosenCol: string;
 }
 
@@ -14,7 +15,7 @@ export const tableDataSlice = createSlice({
     name: 'tableData',
     initialState,
     reducers: {
-        initData: (state, action: PayloadAction<Record<string, any>[]>) => {
+        initData: (state, action: PayloadAction<TableDataType>) => {
             state.data = action.payload;
         },
         updateData: (state, action: PayloadAction<{ newValue: string | null, row: number, col: number }>) => {
