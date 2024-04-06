@@ -7,10 +7,11 @@ const ALPHABET = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', '
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
 
 type TableProps = {
-    data: TableDataType
+    data: TableDataType;
+    columnTypes: string[];
 };
 
-const Table: FC<TableProps> = ({ data }) => {
+const Table: FC<TableProps> = ({ data, columnTypes }) => {
     const dispatch = useAppDispatch();
     const keys = Object.keys(data[0]);
 

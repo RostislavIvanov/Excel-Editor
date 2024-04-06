@@ -4,13 +4,13 @@ import { FC } from 'react';
 import Table from '~/components/Table/Table.tsx';
 
 const EditingData: FC = () => {
-    const { data } = useAppSelector(state => state.tableDataReducer);
+    const { data, columnTypes } = useAppSelector(state => state.tableDataReducer);
 
     return (
         <DashboardLayout>
             <div className={'overflow-auto container max-h-[100vh]'}>
                 {!!data.length &&
-                    <Table data={data}/>
+                    <Table data={data} columnTypes={columnTypes}/>
                 }
             </div>
         </DashboardLayout>
