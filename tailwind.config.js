@@ -5,7 +5,11 @@ export default {
     extend: {
       colors: {
         'lightGrey': '#eeeeee',
-        'borderGrey': 'rgb(156 163 175)'
+        'hoverGrey': '#d7d7d7',
+        'borderGrey': 'rgb(156 163 175)',
+        'lightBlue': '#e8f6fa',
+        'darkBlue': '#18a1cd',
+        'textBlue': '#297ea8',
       },
     },
   },
