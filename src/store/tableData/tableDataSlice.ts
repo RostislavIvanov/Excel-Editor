@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TableDataType } from '~/types/tableTypes.ts';
+import { getObjectKeyTypes } from '~/utils/utils.ts';
 
 type InitialStateType = {
     data: TableDataType;
+    columnTypes: string[];
     chosenCol: string;
 }
 
 const initialState: InitialStateType = {
     data: [],
+    columnTypes: [],
     chosenCol: '',
 };
 
@@ -17,6 +20,7 @@ export const tableDataSlice = createSlice({
     reducers: {
         initData: (state, action: PayloadAction<TableDataType>) => {
             state.data = action.payload;
+            state.columnTypes = getObjectKeyTypes(action.payload[0]);
         },
         updateData: (state, action: PayloadAction<{ newValue: string | null, row: number, col: number }>) => {
             const { row, col, newValue } = action.payload;
