@@ -15,7 +15,7 @@ type TableProps = {
 const Table: FC<TableProps> = ({ data, columnTypes }) => {
     const dispatch = useAppDispatch();
     const keys = Object.keys(data[0]);
-    const [ chosenCol, setChosenCol] = useState<number | undefined>(undefined);
+    const [ chosenCol, setChosenCol ] = useState<number | undefined>(undefined);
     const handleCellChange = (value: string | null, row: number, col: number) => {
         dispatch(updateData({ newValue: value, row, col }));
     };
@@ -55,7 +55,7 @@ const Table: FC<TableProps> = ({ data, columnTypes }) => {
                 {keys.map((column, index) => (
                     <td className={clsx('p-2 border border-borderGrey font-bold bg-lightGrey text-center whitespace-nowrap', {
                         'border-2 border-darkBlue': index === chosenCol,
-                        'text-textBlue': columnTypes[index] === 'number'
+                        'text-textBlue': columnTypes[index] === 'number',
                     })}
                         key={index}>
                         {column}
@@ -73,7 +73,7 @@ const Table: FC<TableProps> = ({ data, columnTypes }) => {
                     {keys.map((column, columnIndex) => (
                         <td className={clsx('p-2 border-borderGrey text-center border', {
                             'bg-lightBlue border-darkBlue': columnIndex === chosenCol,
-                            'text-textBlue': columnTypes[columnIndex] === 'number'
+                            'text-textBlue': columnTypes[columnIndex] === 'number',
                         })}
                             key={columnIndex}
                             contentEditable={true}
