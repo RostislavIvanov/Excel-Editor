@@ -17,7 +17,7 @@ const Table: FC<TableProps> = ({ data, columnTypes }) => {
     const keys = Object.keys(data[0]);
     const [ chosenCol, setChosenCol ] = useState<number | undefined>(undefined);
     const handleCellChange = (value: string | null, row: number, col: number) => {
-        dispatch(updateData({ newValue: value, row, col }));
+        dispatch(updateCell({ newValue: value, row, col }));
     };
 
     const handleChoosingColumn = (columnIndex: number) => {

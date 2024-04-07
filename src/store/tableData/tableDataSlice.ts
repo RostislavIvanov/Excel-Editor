@@ -22,7 +22,7 @@ export const tableDataSlice = createSlice({
             state.data = action.payload;
             state.columnTypes = getObjectKeyTypes(action.payload[0]);
         },
-        updateData: (state, action: PayloadAction<{ newValue: string | null, row: number, col: number }>) => {
+        updateCell: (state, action: PayloadAction<{ newValue: string | null, row: number, col: number }>) => {
             const { row, col, newValue } = action.payload;
             const currentRow = state.data[row];
             const currentKeys = Object.keys(currentRow);
