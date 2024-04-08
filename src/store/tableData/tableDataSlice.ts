@@ -5,13 +5,13 @@ import { formatDate, getObjectKeyTypes } from '~/utils/utils.ts';
 type InitialStateType = {
     data: TableDataType;
     columnTypes: string[];
-    chosenCol: string;
+    chosenCol: number;
 }
 
 const initialState: InitialStateType = {
     data: [],
     columnTypes: [],
-    chosenCol: '',
+    chosenCol: -1,
 };
 
 export const tableDataSlice = createSlice({
@@ -33,6 +33,31 @@ export const tableDataSlice = createSlice({
                 [keyToUpdate]: newValue,
             };
         },
+        updateColumn: (state, action: PayloadAction<{ type: string, col: number }>) => {
+            const { type, col } = action.payload;
+            state.data.forEach((row, index) => {
+                const keyToUpdate = Object.keys(state.data[index])[col];
+                switch (type) {
+                    case 'number': {
+                        row[keyToUpdate] = Number(row[keyToUpdate]);
+                        break;
+                    }
+                    case 'string': {
+                        row[keyToUpdate] = String(row[keyToUpdate]);
+                        break;
+                    }
+                    case 'object': {
+                        row[keyToUpdate] = formatDate(row[keyToUpdate]);
+                        break;
+                    }
+                    default: {
+                        row[keyToUpdate] = String(row[keyToUpdate]);
+                        break;
+                    }
+                }
+
+            });
+        },
         chooseColumn: (state, action: PayloadAction<number>) => {
             state.chosenCol = action.payload;
         },
@@ -42,5 +67,5 @@ export const tableDataSlice = createSlice({
     },
 });
 
-export const { initData, updateData } = tableDataSlice.actions;
+export const { initData, updateCell, chooseColumn, changeColumnType, updateColumn } = tableDataSlice.actions;
 export default tableDataSlice.reducer;
