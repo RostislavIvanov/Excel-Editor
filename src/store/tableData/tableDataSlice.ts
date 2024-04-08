@@ -33,6 +33,12 @@ export const tableDataSlice = createSlice({
                 [keyToUpdate]: newValue,
             };
         },
+        chooseColumn: (state, action: PayloadAction<number>) => {
+            state.chosenCol = action.payload;
+        },
+        changeColumnType: (state, action: PayloadAction<string>) => {
+            state.columnTypes[state.chosenCol] = action.payload;
+        },
     },
 });
 
