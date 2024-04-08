@@ -19,8 +19,17 @@ export const tableDataSlice = createSlice({
     initialState,
     reducers: {
         initData: (state, action: PayloadAction<TableDataType>) => {
-            state.data = action.payload;
+            const rawData = action.payload;
             state.columnTypes = getObjectKeyTypes(action.payload[0]);
+            state.columnTypes.forEach((type, typeIndex) => {
+                if (type === 'object') {
+                    const keyToUpdate = Object.keys(rawData[0])[typeIndex];
+                    rawData.forEach((row) => {
+                        row[keyToUpdate] = formatDate(row[keyToUpdate]);
+                    });
+                }
+            });
+            state.data = rawData;
         },
         updateCell: (state, action: PayloadAction<{ newValue: string | null, row: number, col: number }>) => {
             const { row, col, newValue } = action.payload;
