@@ -19,7 +19,12 @@ const ImportData = () => {
         reader.readAsArrayBuffer(file);
         reader.onload = (e) => {
             const arrayBuffer = (e.target as FileReader)?.result as ArrayBuffer;
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {
+                type: 'array',
+                cellDates: true,
+                cellNF: false,
+                cellText: false,
+            });
             const sheetName = workbook.SheetNames[0];
             const sheet = workbook.Sheets[sheetName];
             dispatch(initData(XLSX.utils.sheet_to_json(sheet)));
