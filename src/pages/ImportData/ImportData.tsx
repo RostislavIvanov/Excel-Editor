@@ -9,7 +9,8 @@ const ImportData = () => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+    const handleImportTable = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         const file = e.target.files?.[0];
         if (!file) return;
@@ -38,7 +39,7 @@ const ImportData = () => {
                             onClick={handleClick}>
                         Загрузить данные из вашей таблицы
                     </button>
-                    <input ref={inputRef} type="file" onChange={handleChange} className={'hidden'}/>
+                    <input ref={inputRef} type="file" onChange={handleImportTable} className={'hidden'}/>
                 </div>
             </DashboardLayout>
         </div>
