@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TableDataType } from '~/types/tableTypes.ts';
-import { getObjectKeyTypes } from '~/utils/utils.ts';
+import { formatDate, getObjectKeyTypes } from '~/utils/utils.ts';
 
 type InitialStateType = {
     data: TableDataType;
