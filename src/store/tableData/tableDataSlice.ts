@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TableDataType } from '~/types/tableTypes.ts';
-import { formatDate, getObjectKeyTypes } from '~/utils/utils.ts';
+import { formatDate, formDigit, getObjectKeyTypes } from '~/utils/utils.ts';
 
 type InitialStateType = {
     data: TableDataType;
@@ -37,9 +37,22 @@ export const tableDataSlice = createSlice({
             const currentKeys = Object.keys(currentRow);
             const keyToUpdate = currentKeys[col];
 
+            let typedValue;
+            switch (state.columnTypes[col]) {
+                case 'number': {
+                    if (newValue) {
+                        typedValue = Number(formDigit(newValue));
+                    }
+                    break;
+                }
+                default: {
+                    typedValue = String(newValue);
+                    break;
+                }
+            }
             state.data[row] = {
                 ...currentRow,
-                [keyToUpdate]: newValue,
+                [keyToUpdate]: typedValue,
             };
         },
         updateColumn: (state, action: PayloadAction<{ type: string, col: number }>) => {

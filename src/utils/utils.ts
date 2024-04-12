@@ -21,3 +21,13 @@ export const formatDate = (date: Date) => {
     const year = date.getFullYear().toString().slice(-2);
     return `${day}.${month}.${year}`;
 };
+
+export const formDigit = (str: string) => { // TODO Добавить поддержку десятичных дробей
+    const regex = /\d+/g;
+    const digits = str.match(regex);
+    if (digits) {
+        return digits.join('');
+    } else {
+        return '';
+    }
+};
