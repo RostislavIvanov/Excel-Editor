@@ -19,7 +19,7 @@ const EditingData: FC = () => {
                 </p>
             </div>
             <ColumnTypingPanel/>
-            <div className={'overflow-auto container max-h-[100vh]'}>
+            <div className={'overflow-auto container max-h-[90vh]'}>
                 {!!data.length &&
                     <Table data={data} columnTypes={columnTypes}/>
                 }
