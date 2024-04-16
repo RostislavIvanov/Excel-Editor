@@ -11,9 +11,10 @@ const ALPHABET = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', '
 type TableProps = {
     data: TableDataType;
     columnTypes: string[];
+    editable?: boolean;
 };
 
-const Table: FC<TableProps> = ({ data, columnTypes }) => {
+const Table: FC<TableProps> = ({ data, columnTypes, editable = true }) => {
     const { chosenCol } = useAppSelector(state => state.tableDataReducer);
     const dispatch = useAppDispatch();
     const keys = Object.keys(data[0]);
@@ -79,7 +80,7 @@ const Table: FC<TableProps> = ({ data, columnTypes }) => {
                             'text-orange-500': columnTypes[columnIndex] === 'object',
                         })}
                             key={columnIndex}
-                            contentEditable={true}
+                            contentEditable={editable}
                             suppressContentEditableWarning={true} // Для подавления предупреждения
                             onBlur={(e) => handleCellChange(e.target.textContent, index, columnIndex)}
                         >
