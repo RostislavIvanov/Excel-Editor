@@ -10,7 +10,7 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
         <>
             <header className={'h-[100px] bg-emerald-600 flex justify-between items-center text-white p-8'}>
                 <h1 className={'text-5xl font-medium'}>
-                    Excel Editor
+                    Excel Visualisator
                 </h1>
                 <ul className={'flex'}>
                     <li className={'mr-8'}>
