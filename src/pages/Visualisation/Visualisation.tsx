@@ -4,12 +4,16 @@ import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import Table from '~/components/Table/Table.tsx';
 import roundChart from '~/assets/icons/round-chart.svg';
 import graph from '~/assets/icons/graph.svg';
+import donutChart from '~/assets/icons/donut-chart.svg';
+import polarArea from '~/assets/icons/polar-area.svg';
+import radarChart from '~/assets/icons/radar-chart.svg';
 import { useState } from 'react';
 import ChartSelect from '~/pages/Visualisation/ChartSelect/ChartSelect.tsx';
 import { useAppDispatch } from '~/hooks/useAppDispatch.ts';
 import { chooseColumn } from '~/store/tableData/tableDataSlice.ts';
+import ChartButton from '~/pages/Visualisation/ChartButton/ChartButton.tsx';
 
-export type ChartType = 'pieChart' | 'lineChart' | undefined;
+export type ChartType = 'pieChart' | 'lineChart' | 'polarArea' | 'donutChart' | 'radarChart' | undefined;
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -31,16 +35,11 @@ const Visualisation = () => {
                         Выберите тип визуализации:
                     </p>
                     <div className={'flex justify-center'}>
-                        <div
-                            onClick={() => handleChangeChartType('lineChart')}
-                            className={'p-4 w-[150px] bg-emerald-600 rounded-[50px] cursor-pointer mx-4 flex flex-col'}>
-                            <img src={graph} alt=""/>
-                        </div>
-                        <div
-                            onClick={() => handleChangeChartType('pieChart')}
-                            className={'p-4 w-[150px] bg-emerald-600 rounded-[50px] cursor-pointer mx-4 flex flex-col'}>
-                            <img src={roundChart} alt=""/>
-                        </div>
+                        <ChartButton changeChartType={handleChangeChartType} img={graph} chartType={'lineChart'} />
+                        <ChartButton changeChartType={handleChangeChartType} img={roundChart} chartType={'pieChart'} />
+                        <ChartButton changeChartType={handleChangeChartType} img={polarArea} chartType={'polarArea'} />
+                        <ChartButton changeChartType={handleChangeChartType} img={donutChart} chartType={'donutChart'} />
+                        <ChartButton changeChartType={handleChangeChartType} img={radarChart} chartType={'radarChart'} />
                     </div>
                     <div className={'flex justify-between my-8'}>
                         <div className={'overflow-auto container max-h-[70vh] w-[47%]'}>
