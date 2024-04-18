@@ -23,6 +23,8 @@ ChartJS.register(
     Tooltip,
     Legend,
 );
+ChartJS.defaults.font.family = 'Montserrat';
+ChartJS.defaults.font.size = 16;
 
 type AxesType = { x: string, y: string }
 
