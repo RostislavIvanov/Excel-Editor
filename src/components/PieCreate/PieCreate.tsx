@@ -1,5 +1,10 @@
 import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import { Pie } from 'react-chartjs-2';
+import { useRoundChartData } from '~/hooks/useRoundChartData.ts';
+import { Chart as ChartJS } from 'chart.js';
+
+ChartJS.defaults.font.family = 'Montserrat';
+ChartJS.defaults.font.size = 16;
 
 const PieCreate = () => {
     const { data, chosenCol, columnNames } = useAppSelector(state => state.tableDataReducer);
@@ -9,6 +14,7 @@ const PieCreate = () => {
         labels: labels,
         datasets: [
             {
+                label: columnNames[chosenCol],
                 data: dataValues,
                 backgroundColor: backgroundColorData,
             },
@@ -16,11 +22,15 @@ const PieCreate = () => {
     };
 
     return (
-        <div className={'w-[500px] m-auto'}>
-            {chosenCol !== -1 &&
+        <>
+            <p className={'text-3xl text-center mb-8'}>
+                Выберите столбец для визуализации в таблице
+            </p>
+            {
+                chosenCol !== -1 &&
                 <Pie data={pieData}/>
             }
-        </div>
+        </>
     );
 };
 
