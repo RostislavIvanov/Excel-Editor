@@ -6,12 +6,14 @@ type InitialStateType = {
     data: TableDataType;
     columnTypes: string[];
     chosenCol: number;
+    columnNames: string[];
 }
 
 const initialState: InitialStateType = {
     data: [],
     columnTypes: [],
     chosenCol: -1,
+    columnNames: []
 };
 
 export const tableDataSlice = createSlice({
@@ -30,6 +32,7 @@ export const tableDataSlice = createSlice({
                 }
             });
             state.data = rawData;
+            state.columnNames = Object.keys(rawData[0]);
         },
         updateCell: (state, action: PayloadAction<{ newValue: string | null, row: number, col: number }>) => {
             const { row, col, newValue } = action.payload;
@@ -89,5 +92,11 @@ export const tableDataSlice = createSlice({
     },
 });
 
-export const { initData, updateCell, chooseColumn, changeColumnType, updateColumn } = tableDataSlice.actions;
+export const {
+    initData,
+    updateCell,
+    chooseColumn,
+    changeColumnType,
+    updateColumn,
+} = tableDataSlice.actions;
 export default tableDataSlice.reducer;
