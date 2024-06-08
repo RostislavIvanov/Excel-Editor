@@ -9,8 +9,6 @@ import polarArea from '~/assets/icons/polar-area.svg';
 import radarChart from '~/assets/icons/radar-chart.svg';
 import { useState } from 'react';
 import ChartSelect from '~/pages/Visualisation/ChartSelect/ChartSelect.tsx';
-import { useAppDispatch } from '~/hooks/useAppDispatch.ts';
-import { chooseColumn } from '~/store/tableData/tableDataSlice.ts';
 import ChartButton from '~/pages/Visualisation/ChartButton/ChartButton.tsx';
 
 export type ChartType = 'pieChart' | 'lineChart' | 'polarArea' | 'donutChart' | 'radarChart' | undefined;
@@ -20,10 +18,8 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Visualisation = () => {
     const { data, columnTypes } = useAppSelector(state => state.tableDataReducer);
     const [ chartType, setChartType ] = useState<ChartType>(undefined);
-    const dispatch = useAppDispatch();
 
     const handleChangeChartType = (type: ChartType) => {
-        dispatch(chooseColumn(-1));
         setChartType(type);
     };
 

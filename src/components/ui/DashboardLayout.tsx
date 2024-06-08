@@ -14,10 +14,9 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
                 </h1>
                 <ul className={'flex'}>
                     <li className={'mr-8'}>
-                        Меню
+
                     </li>
                     <li>
-                        Еще что-то
                     </li>
                 </ul>
             </header>
