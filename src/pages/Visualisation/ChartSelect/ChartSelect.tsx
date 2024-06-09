@@ -11,30 +11,26 @@ type ChartSelectProps = {
 }
 
 const ChartSelect: FC<ChartSelectProps> = ({ chart }) => {
-    const chartTypeSelector = (chart: ChartType) => {
-        switch (chart) {
-            case 'pieChart': {
-                return <PieCreate/>;
-            }
-            case 'lineChart': {
-                return <LineChart/>;
-            }
-            case 'polarArea': {
-                return <PolarAreaCreate/>;
-            }
-            case 'donutChart': {
-                return <DonutChart/>;
-            }
-            case 'radarChart': {
-                return <RadarChart/>;
-            }
-            default: {
-                return null;
-            }
+    switch (chart) {
+        case 'pieChart': {
+            return <PieCreate/>;
         }
-    };
-
-    return (chartTypeSelector(chart));
+        case 'lineChart': {
+            return <LineChart/>;
+        }
+        case 'polarArea': {
+            return <PolarAreaCreate/>;
+        }
+        case 'donutChart': {
+            return <DonutChart/>;
+        }
+        case 'radarChart': {
+            return <RadarChart/>;
+        }
+        default: {
+            return null;
+        }
+    }
 };
 
 export default ChartSelect;

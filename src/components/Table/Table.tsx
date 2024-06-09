@@ -18,6 +18,7 @@ const Table: FC<TableProps> = ({ data, columnTypes, editable = true }) => {
     const { chosenCol } = useAppSelector(state => state.tableDataReducer);
     const dispatch = useAppDispatch();
     const keys = Object.keys(data[0]);
+
     const handleCellChange = (value: string | null, row: number, col: number) => {
         dispatch(updateCell({ newValue: value, row, col }));
     };

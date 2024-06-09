@@ -24,32 +24,28 @@ const Visualisation = () => {
     };
 
     return (
-        <div>
-            <div>
-                <DashboardLayout>
-                    <p className={'text-4xl font-medium text-center mb-8'}>
-                        Выберите тип визуализации:
-                    </p>
-                    <div className={'flex justify-center'}>
-                        <ChartButton changeChartType={handleChangeChartType} img={graph} chartType={'lineChart'} />
-                        <ChartButton changeChartType={handleChangeChartType} img={roundChart} chartType={'pieChart'} />
-                        <ChartButton changeChartType={handleChangeChartType} img={polarArea} chartType={'polarArea'} />
-                        <ChartButton changeChartType={handleChangeChartType} img={donutChart} chartType={'donutChart'} />
-                        <ChartButton changeChartType={handleChangeChartType} img={radarChart} chartType={'radarChart'} />
-                    </div>
-                    <div className={'flex justify-between my-8'}>
-                        <div className={'overflow-auto container max-h-[70vh] w-[47%]'}>
-                            {!!data.length && !!chartType &&
-                                <Table data={data} columnTypes={columnTypes}/>
-                            }
-                        </div>
-                        <div className={'w-1/2'}>
-                            <ChartSelect chart={chartType}/>
-                        </div>
-                    </div>
-                </DashboardLayout>
+        <DashboardLayout>
+            <p className={'text-4xl font-medium text-center mb-8'}>
+                Выберите тип визуализации:
+            </p>
+            <div className={'flex justify-center'}>
+                <ChartButton changeChartType={handleChangeChartType} img={graph} chartType={'lineChart'}/>
+                <ChartButton changeChartType={handleChangeChartType} img={roundChart} chartType={'pieChart'}/>
+                <ChartButton changeChartType={handleChangeChartType} img={polarArea} chartType={'polarArea'}/>
+                <ChartButton changeChartType={handleChangeChartType} img={donutChart} chartType={'donutChart'}/>
+                <ChartButton changeChartType={handleChangeChartType} img={radarChart} chartType={'radarChart'}/>
             </div>
-        </div>
+            <div className={'flex justify-between my-8'}>
+                <div className={'overflow-auto container max-h-[70vh] w-[47%]'}>
+                    {!!data.length && !!chartType &&
+                        <Table data={data} columnTypes={columnTypes}/>
+                    }
+                </div>
+                <div className={'w-1/2'}>
+                    <ChartSelect chart={chartType}/>
+                </div>
+            </div>
+        </DashboardLayout>
     );
 };
 

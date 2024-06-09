@@ -80,7 +80,6 @@ export const tableDataSlice = createSlice({
                         break;
                     }
                 }
-
             });
         },
         chooseColumn: (state, action: PayloadAction<number>) => {
