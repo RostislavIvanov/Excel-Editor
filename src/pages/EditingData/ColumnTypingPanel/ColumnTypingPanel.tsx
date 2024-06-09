@@ -21,11 +21,11 @@ const ColumnTypingPanel: FC = () => {
     return (
         <>
             {chosenCol !== -1 &&
-                <>
-                    <div className={'text-2xl mb-8 inline-block'}>
+                <div className={'mb-4'}>
+                    <div className={'text-2xl inline-block'}>
                         Тип колонки {Object.keys(data[0])[chosenCol]}:
                     </div>
-                    <div className={'inline-block ml-2'}>
+                    <div className={'inline-block ml-2 mt-4 sm:mt-0'}>
                         <select
                             value={selectedValue}
                             onChange={handleDropdownChange}
@@ -38,11 +38,10 @@ const ColumnTypingPanel: FC = () => {
                             <option value="object">date</option>
                         </select>
                     </div>
-                </>
+                </div>
             }
         </>
-    )
-        ;
+    );
 };
 
 export default ColumnTypingPanel;

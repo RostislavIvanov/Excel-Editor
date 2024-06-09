@@ -11,7 +11,7 @@ const ChartButton: FC<ChartButtonProps> = ({ img, changeChartType, chartType }) 
     return (
         <button
             onClick={() => changeChartType(chartType)}
-            className={'p-4 w-[150px] bg-emerald-600 rounded-[50px] cursor-pointer mx-4 flex flex-col'}>
+            className={'p-4 w-[150px] bg-emerald-600 rounded-[50px] cursor-pointer mx-4 mb-4 flex flex-col'}>
             <img src={img} alt=""/>
         </button>
     );

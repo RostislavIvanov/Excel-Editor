@@ -30,7 +30,7 @@ export const ExportChildToPngWrapper:FC<ExportChildToPngWrapperProps> = ({childr
             </div>
             <div className={'flex justify-center mt-4'}>
                 <button
-                    className={'py-6 px-10 bg-emerald-600 text-3xl font-light text-white rounded-[50px]'}
+                    className={'py-6 px-10 bg-emerald-600 text-3xl font-light text-white rounded-[50px] mb-4'}
                     onClick={handleExportToPng}
                 >
                     Экспорт в png

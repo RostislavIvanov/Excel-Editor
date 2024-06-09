@@ -28,20 +28,20 @@ const Visualisation = () => {
             <p className={'text-4xl font-medium text-center mb-8'}>
                 Выберите тип визуализации:
             </p>
-            <div className={'flex justify-center'}>
+            <div className={'flex justify-center flex-wrap'}>
                 <ChartButton changeChartType={handleChangeChartType} img={graph} chartType={'lineChart'}/>
                 <ChartButton changeChartType={handleChangeChartType} img={roundChart} chartType={'pieChart'}/>
                 <ChartButton changeChartType={handleChangeChartType} img={polarArea} chartType={'polarArea'}/>
                 <ChartButton changeChartType={handleChangeChartType} img={donutChart} chartType={'donutChart'}/>
                 <ChartButton changeChartType={handleChangeChartType} img={radarChart} chartType={'radarChart'}/>
             </div>
-            <div className={'flex justify-between my-8'}>
-                <div className={'overflow-auto container max-h-[70vh] w-[47%]'}>
+            <div className={'flex flex-col-reverse md:flex-row justify-between my-8 '}>
+                <div className={'overflow-auto container max-h-[70vh] w-full md:w-[47%]'}>
                     {!!data.length && !!chartType &&
                         <Table data={data} columnTypes={columnTypes}/>
                     }
                 </div>
-                <div className={'w-1/2'}>
+                <div className={'w-full md:w-1/2'}>
                     <ChartSelect chart={chartType}/>
                 </div>
             </div>

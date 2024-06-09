@@ -70,7 +70,7 @@ const LineChart = () => {
 
     return (
         <>
-            <div className={'flex text-2xl'}>
+            <div className={'flex flex-col md:flex-row text-2xl items-center'}>
                 <div className={'mr-8'}>
                     <span className={'pl-4'}>
                         Горизонтальная ось:
