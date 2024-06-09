@@ -2,6 +2,7 @@ import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import { useRoundChartData } from '~/hooks/useRoundChartData.ts';
 import { Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, Filler, Legend, LineElement, PointElement, RadialLinearScale, Tooltip } from 'chart.js';
+import { ExportChildToPngWrapper } from '~/components/ExportChildToPngWrapper/ExportChildToPngWrapper.tsx';
 
 ChartJS.register(
     RadialLinearScale,
@@ -37,7 +38,9 @@ const RadarChart = () => {
             </p>
             {
                 chosenCol !== -1 &&
-                <Radar data={radarChartData}/>
+                <ExportChildToPngWrapper>
+                    <Radar data={radarChartData}/>
+                </ExportChildToPngWrapper>
             }
         </>
     );

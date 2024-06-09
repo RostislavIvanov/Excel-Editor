@@ -2,6 +2,7 @@ import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import { useRoundChartData } from '~/hooks/useRoundChartData.ts';
+import { ExportChildToPngWrapper } from '~/components/ExportChildToPngWrapper/ExportChildToPngWrapper.tsx';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.defaults.font.family = 'Montserrat';
@@ -30,7 +31,9 @@ const DonutChart = () => {
             </p>
             {
                 chosenCol !== -1 &&
-                <Doughnut data={donutChartData}/>
+                <ExportChildToPngWrapper>
+                    <Doughnut data={donutChartData}/>
+                </ExportChildToPngWrapper>
             }
         </>
     );

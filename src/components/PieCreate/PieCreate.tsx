@@ -2,6 +2,7 @@ import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import { Pie } from 'react-chartjs-2';
 import { useRoundChartData } from '~/hooks/useRoundChartData.ts';
 import { Chart as ChartJS } from 'chart.js';
+import { ExportChildToPngWrapper } from '~/components/ExportChildToPngWrapper/ExportChildToPngWrapper.tsx';
 
 ChartJS.defaults.font.family = 'Montserrat';
 ChartJS.defaults.font.size = 16;
@@ -28,7 +29,9 @@ const PieCreate = () => {
             </p>
             {
                 chosenCol !== -1 &&
-                <Pie data={pieData}/>
+                <ExportChildToPngWrapper>
+                    <Pie data={pieData}/>
+                </ExportChildToPngWrapper>
             }
         </>
     );

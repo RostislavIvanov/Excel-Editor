@@ -13,6 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import { useState } from 'react';
+import { ExportChildToPngWrapper } from '~/components/ExportChildToPngWrapper/ExportChildToPngWrapper.tsx';
 
 ChartJS.register(
     CategoryScale,
@@ -101,7 +102,9 @@ const LineChart = () => {
                     </select>
                 </div>
             </div>
-            <Line options={options} data={lineChartData}/>
+            <ExportChildToPngWrapper>
+                <Line options={options} data={lineChartData}/>
+            </ExportChildToPngWrapper>
         </>
     );
 };

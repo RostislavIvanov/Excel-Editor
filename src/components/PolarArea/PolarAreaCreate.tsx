@@ -2,6 +2,7 @@ import { useAppSelector } from '~/hooks/useAppSelector.ts';
 import { ArcElement, Chart as ChartJS, Legend, RadialLinearScale, Tooltip } from 'chart.js';
 import { PolarArea } from 'react-chartjs-2';
 import { useRoundChartData } from '~/hooks/useRoundChartData.ts';
+import { ExportChildToPngWrapper } from '~/components/ExportChildToPngWrapper/ExportChildToPngWrapper.tsx';
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 ChartJS.defaults.font.family = 'Montserrat';
@@ -30,7 +31,9 @@ const PolarAreaCreate = () => {
             </p>
             {
                 chosenCol !== -1 &&
-                <PolarArea data={polarAreaData}/>
+                <ExportChildToPngWrapper>
+                    <PolarArea data={polarAreaData}/>
+                </ExportChildToPngWrapper>
             }
         </>
     );
